@@ -7,8 +7,6 @@ import org.springframework.stereotype.Service;
 import com.mahi.model.Book;
 import com.mahi.repository.BookRepository;
 
-
-
 @Service
 public class BookServiceImpl implements BookService {
 
@@ -20,6 +18,9 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book saveBook(Book book) {
+    /*	book.setTitle("java");
+    	book.setAuthor("Jk");*/
+    	
         return bookRepo.save(book);
     }
 
@@ -30,8 +31,16 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book getBookById(Long id) {
+    	
+    	
         return bookRepo.findById(id)
                        .orElseThrow(() -> new RuntimeException("Book not found with id: " + id));
+    }
+    @Override
+    public Book purchaseBook(Long id) {
+        Book book = getBookById(id);
+        book.setPurchased(true);
+        return bookRepo.save(book);
     }
 
     @Override

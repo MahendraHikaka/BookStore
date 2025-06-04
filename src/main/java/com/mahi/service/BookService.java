@@ -8,4 +8,5 @@ public interface BookService {
     List<Book> getAllBooks();
     Book getBookById(Long id);
     boolean deleteBook(Long id);
+	Book purchaseBook(Long id);
 }

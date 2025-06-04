@@ -1,5 +1,10 @@
 package com.mahi.model;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +20,11 @@ public class Book {
     private String title;
     private String author;
     private Double price;
+    private boolean purchased;
+    @CreationTimestamp
+    private LocalDate regdDate;
+    @CreationTimestamp
+    private LocalTime regdTime;
 
     // Constructors
     public Book() {
@@ -25,6 +35,7 @@ public class Book {
         this.title = title;
         this.author = author;
         this.price = price;
+        
     }
 
     // Getters and Setters
@@ -58,6 +69,13 @@ public class Book {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+    public boolean isPurchased() {
+        return purchased;
+    }
+
+    public void setPurchased(boolean purchased) {
+        this.purchased = purchased;
     }
 
     // toString() Method
